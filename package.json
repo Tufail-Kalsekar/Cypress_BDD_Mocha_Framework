@@ -1,0 +1,26 @@
+{
+  "name": "automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules\\.bin\\cypress run",
+    "headTest": "npm run test -- --headed",
+    "chromeTest": "npm run test --browser chrome",
+    "recordDashBoardTest": "npm run test -- --record --key ",
+    "moduleOnetests": "npm run test -- --spec \"cypress/integration/ModuleOne/*\""
+  },
+  
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
+
+  "author": "TufailKalsekar",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^6.1.0",
+    "cypress-iframe": "^1.0.1",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1"
+  }
+}

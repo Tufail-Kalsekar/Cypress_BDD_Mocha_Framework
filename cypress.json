@@ -1,0 +1,9 @@
+{
+
+"testFiles": "**/*.feature",
+
+"retries": {
+    "runMode": 1
+  }
+
+}
