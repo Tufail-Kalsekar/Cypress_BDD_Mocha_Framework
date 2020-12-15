@@ -1,6 +1,8 @@
 {
-  "name": "Using fixtures to represent data",
+  "name": "Tufail Ashraf Kalsekar",
+  "gender": "male",
   "email": "hello@cypress.io",
   "body": "Fixtures are a great way to mock data for responses to routes",
-  "productName": ["Blackberry","Apple","Samsung"]
+  "productName": ["Blackberry","Apple","Samsung"],
+  "url": "www.rahulshettyacademy.com"
 }
