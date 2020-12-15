@@ -10,12 +10,10 @@ describe('My Second Test Suite', function () {
         })
     })
 
-
-
     it('My FirstTest case', function () {
 
-        const homePage = new HomePage() //need to intialize the object for the pageObject classes 
-        const productPage = new ProductPage()
+        const homePage = new HomePage()         //need to intialize the object for the pageObject classes 
+        const productPage = new ProductPage()   //more importantly make sure path to pageObject files is correct.
         cy.visit(Cypress.env('url') + "/angularpractice/")
 
         homePage.getEditBox().type(this.data.name)
@@ -27,7 +25,8 @@ describe('My Second Test Suite', function () {
         homePage.getShopTab().click()
 
 
-
+        //this is how you repition for different sets of input data, for a specific step in the test.
+        //For better understanding, refer example.json in fixtures folder and refer the 'productName'.
         this.data.productName.forEach(function (element) {
 
             cy.selectProduct(element)
@@ -35,13 +34,12 @@ describe('My Second Test Suite', function () {
         productPage.checkOutButton().click()
         var sum = 0
 
+        //the following steps iterate over the items in the cart and add the amounts.
         cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
-
-
-            const amount = $el.text()
+            const amount = $el.text() 
             var res = amount.split(" ")
-            res = res[1].trim()
-            sum = Number(sum) + Number(res)
+            res = res[1].trim()             //delete any possible blank spaces in the amount stored as a string.
+            sum = Number(sum) + Number(res) //extracted value is in string, use this step to convert a string to a number.
 
         }).then(function () {
             cy.log(sum)
@@ -53,6 +51,8 @@ describe('My Second Test Suite', function () {
             expect(Number(total)).to.equal(sum)
 
         })
+
+        //this part of the script needs to be implemented under pageObject model. 
         cy.contains('Checkout').click()
         cy.get('#country').type('India')
         cy.get('.suggestions > ul > li > a').click()

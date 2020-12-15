@@ -1,10 +1,15 @@
 /// <reference types="Cypress" />
 
+//should ideally be used with hooks, however, this file has only one test.
+cy.fixture('example').then(function (data) {
+    this.data = data
+})
+
 describe('My First Test Suite', function () {
 
     it('My FirstTest case', function () {
 
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/")
+        cy.visit(this.data.url)
         cy.get('.search-keyword').type('ca')
         cy.wait(2000)
         //selenium get hit url in browser, cypress get acts like findElement of selenium
@@ -28,7 +33,7 @@ describe('My First Test Suite', function () {
 
             const textVeg = $el.find('h4.product-name').text()
             if (textVeg.includes('Cashews')) {
-                $el.find('button').trigger("click")    
+                $el.find('button').trigger("click")
             }
         })
 
@@ -40,8 +45,5 @@ describe('My First Test Suite', function () {
             cy.log(logoelement.text())
 
         })
-       })
-
-
-
+    })
 })
